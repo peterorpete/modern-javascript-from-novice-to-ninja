@@ -29,3 +29,5 @@ console.log(ninjas); //["shaun", "ken", "chun-li", "Larry"]
 let popExample = ninjas.pop();
 console.log(popExample); //Larry
 console.log(ninjas); //["shaun", "ken", "chun-li"]
+
+// https://github.com/iamshaunjp/modern-javascript/blob/lesson-13/chapter_2/sandbox.js
