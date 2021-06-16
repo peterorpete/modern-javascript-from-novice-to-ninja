@@ -1,4 +1,4 @@
-// bolleans and comparisons
+// booleans and comparisons
 console.log(true, false, "true", "false");
 
 // methods can return booleans
