@@ -1,4 +1,4 @@
-let i = 5;
+let i = 3;
 
 //do while loops will do a loop once even if the while is wrong.
 do {
