@@ -17,7 +17,6 @@ area = 7.745;
 console.log(Math.trunc(area)); //removes decimal i think
 
 // random numbers
-
 let random = Math.random(); // random is a decimal between 0 - 1
 random = Math.round(random * 100); // rounds up between 1-100
 console.log(random);
