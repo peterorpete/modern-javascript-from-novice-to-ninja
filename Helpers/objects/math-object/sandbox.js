@@ -9,10 +9,10 @@ area = 7.2;
 console.log(Math.round(area)); //7
 
 area = 7.8;
-console.log(Math.floor(area)); //7 (rounds down whatever)
+console.log(Math.floor(area)); //7 (rounds down no matter what)
 
 area = 6.1;
-console.log(Math.ceil(area)); //7 (rounds up whatever)
+console.log(Math.ceil(area)); //7 (rounds up no matter what )
 area = 7.745;
 console.log(Math.trunc(area)); //removes decimal i think
 
