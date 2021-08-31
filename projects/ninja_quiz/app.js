@@ -16,7 +16,16 @@ form.addEventListener("submit", function (e) {
  if (score > 0) {
   window.scrollTo(0, 0);
   result.classList.remove("d-none");
-  scoreEl.textContent = `${score}%`;
+  let output = 1;
+
+  const timer = setInterval(function () {
+   scoreEl.textContent = `${output}%`;
+   if (output === score) {
+    clearInterval(timer);
+   } else {
+    output++;
+   }
+  }, 10);
  } else {
   result.classList.add("d-none");
  }
