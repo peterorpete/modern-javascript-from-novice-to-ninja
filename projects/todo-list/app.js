@@ -20,3 +20,13 @@ addForm.addEventListener("submit", (e) => {
  }
  addForm.reset(); // clears the previous forms input
 });
+
+////
+//* delete todos
+////
+list.addEventListener("click", (e) => {
+ if (e.target.classList.contains("delete")) {
+  console.log("trash can clicked");
+  e.target.parentElement.remove();
+ }
+});
