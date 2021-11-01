@@ -3,15 +3,13 @@ const card = document.querySelector(".card");
 const details = document.querySelector(".details");
 
 const updateUI = (data) => {
+ console.log(data);
  const cityDets = data.cityDets;
  const weather = data.weather;
 
  //update details template
  details.innerHTML = `
-//  <img src="https://www.accuweather.com/images/weathericons/0${weather.WeatherIcon}.svg" class="time card-img-top" />
- <div class="icon bg-light mx-auto text-center">
-  <!-- icon here later -->
- </div>
+
  <h5 class="my-3">${cityDets.LocalizedName}</h5>
  <div class="my-3">${weather.WeatherText}</div>
  <div class="display-4 my-4">
