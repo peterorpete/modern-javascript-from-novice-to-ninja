@@ -15,20 +15,29 @@ const addRecipe = (recipe, id) => {
  `;
  list.innerHTML += html;
 };
-// get documents
-db
- .collection("recipes")
- .get()
- .then((snapshot) => {
-  //when we have the data
-  snapshot.docs.forEach((doc) => {
-   console.log(doc.data().created_at);
-   addRecipe(doc.data(), doc.id);
-  });
- })
- .catch((err) => {
-  console.log(err);
+
+// delete recipe
+const deleteRecipe = (id) => {
+ const recipe = document.querySelectorAll("li");
+ recipe.forEach((recipe) => {
+  if (recipe.getAttribute("data-id") === id) {
+   recipe.remove();
+  }
  });
+};
+
+// get documents
+db.collection("recipes").onSnapshot((snapshot) => {
+ snapshot.docChanges().forEach((change) => {
+  const doc = change.doc;
+  console.log(doc);
+  if (change.type === "added") {
+   addRecipe(doc.data(), doc.id);
+  } else if (change.type === "removed") {
+   deleteRecipe(doc.id);
+  }
+ });
+});
 
 // add documents
 form.addEventListener("submit", (e) => {
@@ -47,7 +56,7 @@ form.addEventListener("submit", (e) => {
   .catch(() => {
    console.log(error);
   });
- console.log(recipe);
+ //  console.log(recipe);
 });
 
 //deleting data
@@ -55,7 +64,7 @@ list.addEventListener("click", (e) => {
  console.log(e.target.tagName);
  if (e.target.tagName === "BUTTON") {
   const id = e.target.parentElement.getAttribute("data-id");
-  console.log(id);
+  // console.log(id);
   db.collection("recipes").doc(id).delete().then(console.log("recipe deleted"));
  }
 });
