@@ -1,5 +1,7 @@
 const list = document.querySelector("ul");
 const form = document.querySelector("form");
+const button = document.querySelector("button");
+
 const addRecipe = (recipe, id) => {
  let time = recipe.created_at.toDate();
  let html = `
@@ -27,7 +29,7 @@ const deleteRecipe = (id) => {
 };
 
 // get documents
-db.collection("recipes").onSnapshot((snapshot) => {
+const unsub = db.collection("recipes").onSnapshot((snapshot) => {
  snapshot.docChanges().forEach((change) => {
   const doc = change.doc;
   console.log(doc);
@@ -67,4 +69,10 @@ list.addEventListener("click", (e) => {
   // console.log(id);
   db.collection("recipes").doc(id).delete().then(console.log("recipe deleted"));
  }
+});
+
+//unsub from database changes
+button.addEventListener("click", () => {
+ unsub();
+ console.log("unsubscribed from collection changes ");
 });
